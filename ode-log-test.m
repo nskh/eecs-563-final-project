@@ -1,3 +1,21 @@
+%% Linear system
+A = [-7  1; 
+     8  -10];
+eig(A)
+errormag = 1;
+tin = [0, 10];
+y0 = [0, 0];
+
+odeFcn = @(t, y) linear_dyn(t, y, A, errormag);
+[timeout,out] = ode45(odeFcn, tin, y0);
+
+plot(timeout, out)
+title(sprintf("Trajectory for error %.1f", errormag))
+xlabel("time")
+ylabel("state value")
+legend(["y_0", "y_1"])
+
+%% Bicycle 
 v = 1;
 l = 5;
 
