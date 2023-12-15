@@ -1,8 +1,11 @@
 %% Linear system
 A = [-7  1; 
      8  -10]; % 10.9
+P = eye(2);
 
 % A = [-1 1; -1 -1]; % 11.15
+% P = [1, 1/16; 1/16, 1];
+
 
 eig(A)
 errormag = 1000;
@@ -36,6 +39,13 @@ title("Output errors")
 xlabel("Time")
 ylabel("Error value")
 plot(out_noiseless - out)
+
+%% Discretized
+tmax = 10;
+dt = 0.1;
+y = discrete_with_disturbance(A, tmax, dt, y0', errormag, t_disturbance);
+plot(0:dt:tmax, y)
+title("Discretized system")
 
 %% Bicycle 
 v = 1;
