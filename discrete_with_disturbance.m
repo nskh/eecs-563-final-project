@@ -15,7 +15,7 @@ for t = dt:dt:tmax
         fprintf("error at time %0.1f\n", t)
     end
     y = [y, new_y];
-    disp(length(y))
+    % disp(length(y))
 end
 
 end
