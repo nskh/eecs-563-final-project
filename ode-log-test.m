@@ -13,6 +13,7 @@ t_disturbance = 2;
 tin = [0:0.1:10];
 y0 = [10, 10];
 
+rng(123)
 odeFcn = @(t, y) noisy_linear_dyn(t, y, A, errormag, t_disturbance);
 [timeout,out] = ode45(odeFcn, tin, y0);
 
@@ -43,6 +44,7 @@ plot(out_noiseless - out)
 %% Discretized
 tmax = 10;
 dt = 0.1;
+rng(123)
 y = discrete_with_disturbance(A, tmax, dt, y0', errormag, t_disturbance);
 plot(0:dt:tmax, y)
 title("Discretized system")
